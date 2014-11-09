@@ -1,0 +1,11 @@
+{
+    "name": "meanjs-template",
+    "version": "0.1.0",
+    "description": "MEANJS Template",
+    "dependencies": {
+        "angular": "1.2.x",
+        "angular-resource": "1.2.x",
+        "angular-mocks": "1.2.x",
+        "angular-ui-router": "0.2.x"
+    }
+}
