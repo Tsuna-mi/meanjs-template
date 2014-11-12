@@ -141,6 +141,18 @@ module.exports = function(grunt) {
                 src: "public/modules/**/**.html",
                 dest: "public/dist/templates.js"
             }
+        },
+        postcss: {
+            options: {
+                processors: [
+                    require("autoprefixer-core")({
+                        browsers: "last 5 versions"
+                    }).postcss
+                ]
+            },
+            dist: {
+                src: "public/dist/modules/**/*.css"
+            }
         }
     });
 
@@ -162,14 +174,16 @@ module.exports = function(grunt) {
         require("./server.js");
     });
 
-    grunt.registerTask("default", ["lint", "less", "concurrent:dev"]);
-    grunt.registerTask("watch-tasks", ["lint", "less"]);
+    grunt.registerTask("default", ["lint", "generate-css", "concurrent:dev"]);
+    grunt.registerTask("watch-tasks", ["lint", "generate-css"]);
 
     grunt.registerTask("lint", ["jshint", "lesslint"]);
 
-    grunt.registerTask("test", ["lint", "env:test", "jasmine_node", "karma:singleRun", "server", "protractor"]);
+    grunt.registerTask("generate-css", ["less", "postcss"]);
 
-    grunt.registerTask("build", ["lint", "loadConfig", "less", "ngtemplates", "uglify", "cssmin", "concat"]);
+    grunt.registerTask("test", ["lint", "generate-css", "env:test", "jasmine_node", "karma:singleRun", "server", "protractor"]);
 
-    grunt.registerTask("ci", ["lint", "env:test", "jasmine_node", "karma:continuous", "protractor:continuous"]);
+    grunt.registerTask("build", ["lint", "generate-css", "loadConfig", "ngtemplates", "uglify", "cssmin", "concat"]);
+
+    grunt.registerTask("ci", ["lint", "generate-css", "env:test", "jasmine_node", "karma:continuous", "protractor:continuous"]);
 };
