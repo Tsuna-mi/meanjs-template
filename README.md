@@ -56,19 +56,14 @@ The current available environments include:
 #### Production ####
 
 In production mode the application is setup to use minified assets
-on the client side. [Grunt](http://gruntjs.com/) is used to do this,
-so to generate the required assets for production execute the
-following command:
+on the client side (along with template caching via Angular).
+[Grunt](http://gruntjs.com/) is used to do this via the grunt `build`
+task. To allow for easier deployment, this work has been bundled up
+into a single npm script. Installing dependencies, building the necessary
+production assets, and starting the server in the `production` environment
+can be done via this command:
 
-`$ npm run build`
-
-(Note, this uses the `build` environment's configuration to both
-minify assets and add all HTML templates into Angular's template cache.)
-
-Once these assets have been generated, to start the application
-in `production` mode, execute the following command:
-
-`$ NODE_ENV=production npm start`
+`$ npm run production`
 
 ### Configuration ###
 

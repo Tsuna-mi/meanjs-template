@@ -7,6 +7,7 @@
         "start": "grunt",
 
         "build": "grunt build",
+        "production": "npm install; npm run build; NODE_ENV=production node server.js",
 
         "test": "grunt test",
         "test-server-watch": "NODE_ENV=test jasmine-node --test-dir test/server --matchall --color --autotest --watch app",
