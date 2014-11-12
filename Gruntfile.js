@@ -123,7 +123,10 @@ module.exports = function(grunt) {
         },
         nodemon: {
             dev: {
-                script: "server.js"
+                script: "server.js",
+                options: {
+                    ignore: ["node_modules/**", "public/lib/**", "public/dist/**"]
+                }
             }
         },
         ngtemplates: {
