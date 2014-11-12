@@ -6,7 +6,7 @@
     "scripts": {
         "start": "grunt",
 
-        "build": "NODE_ENV=build grunt build",
+        "build": "grunt build",
 
         "test": "grunt test",
         "test-server-watch": "NODE_ENV=test jasmine-node --test-dir test/server --matchall --color --autotest --watch app",

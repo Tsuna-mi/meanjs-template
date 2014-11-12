@@ -62,6 +62,9 @@ module.exports = function(grunt) {
         env: {
             test: {
                 NODE_ENV: "test"
+            },
+            build: {
+                NODE_ENV: "build"
             }
         },
         jasmine_node: {
@@ -177,16 +180,12 @@ module.exports = function(grunt) {
         require("./server.js");
     });
 
-    grunt.registerTask("default", ["lint", "generate-css", "concurrent:dev"]);
     grunt.registerTask("watch-tasks", ["lint", "generate-css"]);
-
     grunt.registerTask("lint", ["jshint", "lesslint"]);
-
     grunt.registerTask("generate-css", ["less", "postcss"]);
 
-    grunt.registerTask("test", ["lint", "generate-css", "env:test", "jasmine_node", "karma:singleRun", "server", "protractor"]);
-
-    grunt.registerTask("build", ["lint", "generate-css", "loadConfig", "ngtemplates", "uglify", "cssmin", "concat"]);
-
-    grunt.registerTask("ci", ["lint", "generate-css", "env:test", "jasmine_node", "karma:continuous", "protractor:continuous"]);
+    grunt.registerTask("default", ["lint", "generate-css", "concurrent:dev"]);
+    grunt.registerTask("test", ["env:test", "lint", "generate-css", "jasmine_node", "karma:singleRun", "server", "protractor"]);
+    grunt.registerTask("build", ["env:build", "loadConfig", "lint", "generate-css", "ngtemplates", "uglify", "cssmin", "concat"]);
+    grunt.registerTask("ci", ["env:test", "lint", "generate-css", "jasmine_node", "karma:continuous", "protractor:continuous"]);
 };
