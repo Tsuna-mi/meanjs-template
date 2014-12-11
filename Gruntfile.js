@@ -187,5 +187,5 @@ module.exports = function(grunt) {
     grunt.registerTask("default", ["lint", "generate-css", "concurrent:dev"]);
     grunt.registerTask("test", ["env:test", "lint", "generate-css", "jasmine_node", "karma:singleRun", "server", "protractor"]);
     grunt.registerTask("build", ["env:build", "loadConfig", "lint", "generate-css", "ngtemplates", "uglify", "cssmin", "concat"]);
-    grunt.registerTask("ci", ["env:test", "lint", "generate-css", "jasmine_node", "karma:continuous", "protractor:continuous"]);
+    grunt.registerTask("ci", ["env:test", "lint", "generate-css", "jasmine_node", "karma:continuous", "server", "protractor:continuous"]);
 };

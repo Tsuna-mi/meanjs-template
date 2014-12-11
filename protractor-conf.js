@@ -1,5 +1,24 @@
 "use strict";
 
+var BPromise = require("bluebird");
+
+function determineCapabilities() {
+    // In continuous integration, only run one browser, but otherwise
+    // run the tests against all the browsers.
+    if (process.env.CI) {
+        return [{
+            browserName: "firefox"
+        }];
+    } else {
+        return [{
+            browserName: "firefox"
+        }, {
+            browserName: "chrome"
+        }];
+    }
+}
+var CAPABILITIES = determineCapabilities();
+
 exports.config = {
     allScriptsTimeout: 11000,
 
@@ -7,21 +26,15 @@ exports.config = {
         "test/client/e2e/*.js"
     ],
 
-    capabilities: {
-        "browserName": "chrome"
-    },
+    multiCapabilities: CAPABILITIES,
 
     baseUrl: "http://localhost:3001/",
 
-    // TODO change this to beforeLaunch once this is released:
-    // https://github.com/angular/protractor/commit/eedf50b48ca55f18e8555ce5aa64ad92b03887c8
-    onPrepare: function() {
+    beforeLaunch: function() {
         console.log("Starting setup...");
     },
 
-    // TODO change this to afterLaunch once this is released:
-    // https://github.com/angular/protractor/commit/eedf50b48ca55f18e8555ce5aa64ad92b03887c8
-    onComplete: function() {
+    afterLaunch: function() {
         console.log("Starting cleanup...");
     },
 
