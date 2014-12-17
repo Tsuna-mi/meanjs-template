@@ -72,7 +72,14 @@ module.exports = function(grunt) {
                 forceExit: true,
                 matchall: true,
                 showColors: true,
-                includeStackTrace: true
+                includeStackTrace: true,
+                jUnit: {
+                    // only enable JUnit reports if in continuous integration mode
+                    report: process.env.CI,
+                    savePath: "test-reports",
+                    useDotNotation: true,
+                    consolidate: true
+                }
             },
             all: ["test/server"]
         },
@@ -88,7 +95,7 @@ module.exports = function(grunt) {
             continuous: {
                 configFile: "karma.conf.js",
                 singleRun: true,
-                reporters: "dots",
+                reporters: "junit",
                 browsers: ["Firefox"]
             }
         },

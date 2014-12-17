@@ -9,3 +9,4 @@ public/lib
 .idea/
 *.docker.tag
 config/private-config.json
+test-reports/

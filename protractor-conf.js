@@ -34,6 +34,18 @@ exports.config = {
         console.log("Starting setup...");
     },
 
+    onPrepare: function() {
+        // in continuous integration, enable JUnit reporting (for Jenkins)
+        if (process.env.CI) {
+            // require the reporters here since it requires jasmine be global
+            // (which it is at this point)
+            require("jasmine-reporters");
+            // add the JUnit reporter
+            jasmine.getEnv().addReporter(new jasmine.JUnitXmlReporter(
+                "test-reports", true, true));
+        }
+    },
+
     afterLaunch: function() {
         console.log("Starting cleanup...");
     },

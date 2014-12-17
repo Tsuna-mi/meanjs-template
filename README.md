@@ -110,3 +110,14 @@ To run all the tests, execute the following command:
 [Grunt](http://gruntjs.com/) is used to bundle all the test execution
 into one command. For more information on how this is done, please
 see the `Gruntfile.js` file -- specifically the `test` task.
+
+### Run Tests for Continuous Integration ###
+
+In a continuous integration environment (such as Jenkins), the tests have been
+configured to use only Firefox for a browser, and generate test reports in an
+XML format that resembles JUnit. To run the tests in continuous integration mode,
+execute the following:
+
+`$ npm run ci`
+
+For more information on running Firefox without a GUI, see: http://stackoverflow.com/a/16311264.
