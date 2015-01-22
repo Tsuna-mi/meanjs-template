@@ -20,13 +20,13 @@ module.exports = function(grunt) {
                 jshintrc: true
             }
         },
-        lesslint: {
+        scsslint: {
+            allFiles: [
+                "public/modules/**/*.scss",
+            ],
             options: {
-                csslint: {
-                    csslintrc: ".csslintrc"
-                }
-            },
-            src: "public/modules/**/*.less"
+                config: ".scss-lint.yml"
+            }
         },
         uglify: {
             production: {
@@ -111,18 +111,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        less: {
-            options: {
-                paths: ["public/modules"]
-            },
-            files: {
-                expand: true,
-                cwd: "public/modules",
-                src: ["**/*.less"],
-                dest: "public/dist/modules/",
-                ext: ".css"
-            }
-        },
         concurrent: {
             dev: {
                 tasks: ["nodemon", "watch"]
@@ -153,6 +141,15 @@ module.exports = function(grunt) {
             "meanjs-template": {
                 src: "public/modules/**/**.html",
                 dest: "public/dist/templates.js"
+            }
+        },
+        sass: {
+            files: {
+                expand: true,
+                cwd: "public/modules",
+                src: ["**/*.scss"],
+                dest: "public/dist/modules/",
+                ext: ".css"
             }
         },
         postcss: {
@@ -188,8 +185,8 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("watch-tasks", ["lint", "generate-css"]);
-    grunt.registerTask("lint", ["jshint", "lesslint"]);
-    grunt.registerTask("generate-css", ["less", "postcss"]);
+    grunt.registerTask("lint", ["jshint", "scsslint"]);
+    grunt.registerTask("generate-css", ["sass", "postcss"]);
 
     grunt.registerTask("default", ["lint", "generate-css", "concurrent:dev"]);
     grunt.registerTask("test", ["env:test", "lint", "generate-css", "jasmine_node", "karma:singleRun", "server", "protractor"]);
