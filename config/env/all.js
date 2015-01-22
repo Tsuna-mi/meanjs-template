@@ -16,7 +16,10 @@ module.exports = {
 
             ],
             js: [
-                // angular (if jquery is used, must be BEFORE angular)
+                // jquery
+                "public/lib/jquery/dist/jquery.js",
+
+                // angular
                 "public/lib/angular/angular.js",
                 "public/lib/angular-resource/angular-resource.js",
                 "public/lib/angular-ui-router/release/angular-ui-router.js"

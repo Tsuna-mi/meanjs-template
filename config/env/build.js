@@ -10,6 +10,9 @@ module.exports = {
 
             ],
             js: [
+                // jquery
+                "public/lib/jquery/dist/jquery.min.js",
+
                 // angular
                 "public/lib/angular/angular.min.js",
                 "public/lib/angular-resource/angular-resource.min.js",

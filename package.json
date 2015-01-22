@@ -7,7 +7,7 @@
         "start": "grunt",
 
         "build": "grunt build",
-        "production": "npm install; npm run build; NODE_ENV=production node server.js",
+        "production": "NODE_ENV=production node server.js",
 
         "test": "grunt test",
         "test-server-watch": "NODE_ENV=test jasmine-node --test-dir test/server --matchall --color --autotest --watch app",
@@ -16,7 +16,7 @@
         "update-webdriver": "./node_modules/.bin/webdriver-manager update",
         "protractor": "./node_modules/.bin/protractor protractor-conf.js",
 
-        "postinstall": "npm rebuild; npm run update-webdriver; bower install --config.interactive=false"
+        "postinstall": "npm rebuild; npm run update-webdriver; bower install --config.interactive=false --allow-root"
     },
     "dependencies": {
         "async": "~0.9.0",
