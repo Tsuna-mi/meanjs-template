@@ -1,6 +1,6 @@
 # meanjs-template #
 
-Template project for a MEAN.JS application
+Template project for a [MEAN.JS](http://meanjs.org/) application
 
 ## Running the Project ##
 
@@ -95,15 +95,7 @@ end to end tests for the client which use
 Project dependencies are required for tests as well, so please make
 sure the [dependencies are installed](#install-dependencies).
 
-To run the end to end tests using protractor, a one time setup step is
-required. Protractor uses the
-[Selenium WebDriver](http://docs.seleniumhq.org/projects/webdriver/)
-which needs to be downloaded and available. To do this, execute
-the following command (from the root of the project):
-
-`$ npm run update-webdriver`
-
-### Run all Tests ###
+### Run All Tests ###
 
 To run all the tests, execute the following command:
 
@@ -123,3 +115,17 @@ execute the following:
 `$ npm run ci`
 
 For more information on running Firefox without a GUI, see: http://stackoverflow.com/a/16311264.
+
+### Additional Test Run Actions ###
+
+To run the server side tests in a "watch" mode (re-runs the tests after each change):
+
+`$ npm run test-server-watch`
+
+To run the client side karma unit tests in a "watch" mode:
+
+`$ npm run test-client-watch`
+
+To run the protractor tests:
+
+`$ npm run protractor`
