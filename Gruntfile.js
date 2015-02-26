@@ -36,16 +36,16 @@ module.exports = function(grunt) {
                     sourceMap: true
                 },
                 files: {
-                    "public/dist/application.min.js": "<%= applicationJavaScriptFiles %>",
-                    "public/dist/templates.min.js": "public/dist/templates.js"
+                    "<%= minifiedApplicationJavaScriptFiles %>": "<%= applicationJavaScriptFiles %>",
+                    "<%= minifiedTemplates %>": "public/dist/templates.js"
                 }
             }
         },
         cssmin: {
             combine: {
                 files: {
-                    "public/dist/application.min.css": "<%= applicationCSSFiles %>",
-                    "public/dist/vendor.min.css": "<%= vendorCSSFiles %>"
+                    "<%= minifiedApplicationCSSFiles %>": "<%= applicationCSSFiles %>",
+                    "<%= minifiedVendorCSSFiles %>": "<%= vendorCSSFiles %>"
                 }
             }
         },
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
                     stripBanners: true
                 },
                 files: {
-                    "public/dist/vendor.min.js": "<%= vendorJavaScriptFiles %>"
+                    "<%= minifiedVendorJavaScriptFiles %>": "<%= vendorJavaScriptFiles %>"
                 }
             }
         },
@@ -173,11 +173,25 @@ module.exports = function(grunt) {
     grunt.task.registerTask("loadConfig", "Task that loads the config into a grunt option.", function() {
         var init = require("./config/init")();
         var config = require("./config/config");
+        var gitRev = require("git-rev-sync");
 
         grunt.config.set("vendorJavaScriptFiles", config.assets.lib.js);
         grunt.config.set("vendorCSSFiles", config.assets.lib.css);
         grunt.config.set("applicationJavaScriptFiles", config.assets.js);
         grunt.config.set("applicationCSSFiles", config.assets.css);
+
+        // the minified asset names (with git version)
+        var version = gitRev.short();
+        grunt.config.set("minifiedVendorJavaScriptFiles",
+            "public/dist/vendor-" + version + ".min.js");
+        grunt.config.set("minifiedVendorCSSFiles",
+            "public/dist/vendor-" + version + ".min.css");
+        grunt.config.set("minifiedApplicationJavaScriptFiles",
+            "public/dist/application-" + version + ".min.js");
+        grunt.config.set("minifiedApplicationCSSFiles",
+            "public/dist/application-" + version + ".min.css");
+        grunt.config.set("minifiedTemplates",
+            "public/dist/templates-" + version + ".min.js");
     });
 
     grunt.registerTask("server", "Start the server", function() {

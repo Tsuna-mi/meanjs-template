@@ -9,7 +9,8 @@ var express = require("express"),
     passport = require("passport"),
     config = require("./config"),
     consolidate = require("consolidate"),
-    path = require("path");
+    path = require("path"),
+    gitRev = require("git-rev-sync");
 
 module.exports = function(db) {
     // Initialize express app
@@ -23,6 +24,7 @@ module.exports = function(db) {
     // Setting application local variables
     app.locals.jsFiles = config.getJavaScriptAssets();
     app.locals.cssFiles = config.getCSSAssets();
+    app.locals.gitRevision = gitRev.long();
 
     // Passing the request url to environment locals
     app.use(function(req, res, next) {

@@ -1,21 +1,25 @@
 "use strict";
 
+var gitRev = require("git-rev-sync");
+
+var version = gitRev.short();
+
 module.exports = {
     assets: {
         lib: {
             css: [
-                "public/dist/vendor.min.css"
+                "public/dist/vendor-" + version + ".min.css"
             ],
             js: [
-                "public/dist/vendor.min.js"
+                "public/dist/vendor-" + version + ".min.js"
             ]
         },
         css: [
-            "public/dist/application.min.css"
+            "public/dist/application-" + version + ".min.css"
         ],
         js: [
-            "public/dist/application.min.js",
-            "public/dist/templates.min.js"
+            "public/dist/application-" + version + ".min.js",
+            "public/dist/templates-" + version + ".min.js"
         ]
     }
 };
