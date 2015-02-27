@@ -4,7 +4,7 @@ Template project for a [MEAN.JS](http://meanjs.org/) application
 
 ## Running the Project ##
 
-To run the application, some initial setup required:
+To run the application, some initial setup is required:
 
 ### Install Node ###
 
@@ -26,12 +26,10 @@ This will install both the server side dependencies
 
 ### Sass ###
 
-This project uses [Sass](http://sass-lang.com/) as a CSS preprocessor. To
-install Sass, you need Ruby installed. From there, to install Sass, run:
-
-`$ gem install sass`
-
-We also use a [Sass linter](https://github.com/causes/scss-lint). To
+This project uses [Sass](http://sass-lang.com/) as a CSS preprocessor. Instead
+of the Ruby version, this project uses [`node-sass`](https://github.com/sass/node-sass)
+and builds the Sass automatically via a Grunt task. However, we also use a
+[Sass linter](https://github.com/causes/scss-lint) which requires Ruby. To
 install `scss-lint` run the command:
 
 `$ gem install scss-lint`

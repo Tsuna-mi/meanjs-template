@@ -144,12 +144,17 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-            files: {
-                expand: true,
-                cwd: "public/modules",
-                src: ["**/*.scss"],
-                dest: "public/dist/modules/",
-                ext: ".css"
+            options: {
+                sourceMap: true
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: "public/modules",
+                    src: ["**/*.scss"],
+                    dest: "public/dist/modules/",
+                    ext: ".css"
+                }]
             }
         },
         postcss: {
