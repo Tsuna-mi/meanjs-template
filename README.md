@@ -1,6 +1,29 @@
 # meanjs-template #
 
-Template project for a [MEAN.JS](http://meanjs.org/) application
+Template project for a [MEAN.JS](http://meanjs.org/) application, with some changes:
+* Remove the example controllers, routes, and only supply minimal single page
+* Provide a solution for continuous integration (Jenkins) testing
+* Implement a production build solution for minimizing and combining assets
+* Show Git revision within HTML page source, and version assets
+* Use Sass
+* And some other minor things which we've found useful...
+
+## Documentation ##
+
+- [Running the Project](#running-the-project)
+  - [Install Node](#install-node)
+  - [Install Dependencies](#install-dependencies)
+  - [Sass](#sass)
+  - [MongoDB](#mongodb)
+  - [Start the App](#start-the-app)
+    - [Production](#production)
+  - [Configuration](#configuration)
+- [Tests](#tests)
+  - [Setup](#setup)
+  - [Run All Tests](#run-all-tests)
+  - [Run Tests for Continuous Integration](#run-tests-for-continuous-integration)
+  - [Additional Test Run Actions](#additional-test-run-actions)
+- [Problems](#problems)
 
 ## Running the Project ##
 
@@ -47,6 +70,10 @@ on the installation process and starting up MongoDB, please consult
 the [installation instructions](http://docs.mongodb.org/manual/installation/).
 
 ### Start the App ###
+
+** Note that because this project uses `git-rev-sync` to show the Git revision,
+the app will fail to start without a Git history available. **
+For more information on how to solve this, please see the [Problems section](#problems).
 
 This project is configured to load separate configuration based on the
 environment where it is run (for example, `development` vs `production`).
@@ -139,3 +166,21 @@ To run the client side karma unit tests in a "watch" mode:
 To run the protractor tests:
 
 `$ npm run protractor`
+
+## Problems ##
+
+Starting the app, or running the Protractor tests results in the error:
+
+```
+RangeError: Maximum call stack size exceeded
+```
+
+Since this project uses the `git-rev-sync` to establish a Git revision history, if
+one is not available, it will look in a parent directory recursively. This can cause
+this error. To avoid this, initialize the Git repo on this project and issue a commit:
+
+`$ git init; git add .; git commit`
+
+---------------------------------------
+
+If there are any other problems, please open an [issue](https://github.com/CognitiveScale/meanjs-template/issues).
