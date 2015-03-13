@@ -15,6 +15,8 @@ module.exports = _.extend(
  * Get files by glob patterns
  */
 module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
+    var files;
+
     // For context switching
     var _this = this;
 
@@ -33,17 +35,14 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
         if (urlRegex.test(globPatterns)) {
             output.push(globPatterns);
         } else {
-            glob(globPatterns, {
-                sync: true
-            }, function(err, files) {
-                if (removeRoot) {
-                    files = files.map(function(file) {
-                        return file.replace(removeRoot, "/assets/");
-                    });
-                }
+            files = glob.sync(globPatterns);
+            if (removeRoot) {
+                files = files.map(function(file) {
+                    return file.replace(removeRoot, "/assets/");
+                });
+            }
 
-                output = _.union(output, files);
-            });
+            output = _.union(output, files);
         }
     }
 
