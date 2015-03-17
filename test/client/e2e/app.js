@@ -1,6 +1,6 @@
 "use strict";
 
-describe("meanjs-template App", function() {
+describe("The application", function() {
     var ROOT_URL_PREFIX;
 
     // TODO should we keep these in a configuration file?

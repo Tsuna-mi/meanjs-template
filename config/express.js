@@ -79,7 +79,7 @@ module.exports = function(db) {
     // use express' session
     app.use(session({
         name: "meanjs-template",
-        secret: "meanjs-template-super-secret-phrase"
+        secret: config.sessionSecret
     }));
 
     // use passport session

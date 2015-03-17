@@ -82,7 +82,14 @@ If no environment is specified, it will default to `development`.
 
 To start the application (in development mode), execute the following command:
 
-`$ NODE_ENV=development npm start`
+`$ npm start`
+
+This script will call `grunt` specifying the `development` environment. If
+you wish you specify an environment, use `grunt` directly and include the
+`NODE_ENV` environment variable. For example, to start the project in `test`
+environment, execute the following command:
+
+`$ NODE_ENV=test grunt`
 
 The current available environments include:
 
@@ -95,7 +102,7 @@ The current available environments include:
 In production mode the application is setup to use minified assets
 on the client side (along with template caching via Angular).
 [Grunt](http://gruntjs.com/) is used to do this via the grunt `build`
-task. To execute this task, run the following command:
+task. To execute this build task, run the following command:
 
 `$ npm run build`
 
@@ -103,6 +110,10 @@ To start the server in the `production` environment, execute the following
 command:
 
 `$ npm run production`
+
+This command does not use `grunt`, and therefore does not use `nodemon` to
+monitor for file system changes. This was done to allow a separate "production"
+process to monitor the state of the server.
 
 ### Configuration ###
 
