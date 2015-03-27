@@ -6,7 +6,7 @@ angular.module(ApplicationConfiguration.applicationModuleName,
 
 // Setting HTML5 Location Mode
 angular.module(ApplicationConfiguration.applicationModuleName).config(["$locationProvider",
-    function($locationProvider, localStorageServiceProvider) {
+    function($locationProvider) {
         $locationProvider.html5Mode(true);
     }
 ]);
