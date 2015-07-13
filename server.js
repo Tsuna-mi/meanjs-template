@@ -1,8 +1,11 @@
 "use strict";
 
-var init = require("./config/init")(),
-    config = require("./config/config"),
-    mongoose = require("mongoose");
+require("./config/init")();
+
+var config = require("./config/config"),
+    path = require("path"),
+    mongoose = require("mongoose"),
+    logger = require("./app/lib/logger.js")();
 
 /**
  * Main application entry file.
@@ -12,11 +15,25 @@ var init = require("./config/init")(),
 // Bootstrap db connection
 var mongoUrl = config.mongo.protocol + config.mongo.host + ":" +
     config.mongo.port + "/" + config.mongo.database;
-var db = mongoose.connect(mongoUrl, function(err) {
-    if (err) {
-        console.error("\x1b[31m", "Could not connect to MongoDB!");
-        console.log(err);
+
+var db = mongoose.connect(mongoUrl, function (error) {
+    if (error) {
+        logger.error("Could not connect to MongoDB: %s", error.message);
+        throw error;
     }
+    else {
+        logger.log("Connected to MongoDB");
+        mongoose.connection.on("disconnected", function () {
+            var errorMsg = "Lost connection to MongoDB"; 
+            logger.error(errorMsg);
+            throw new Error(errorMsg);
+        });
+    }
+});
+
+// load all the mongoose models
+config.getGlobbedFiles("./app/models/**/*.js").forEach(function(modelPath) {
+    require(path.resolve(modelPath));
 });
 
 // Init the express application
@@ -26,9 +43,9 @@ var app = require("./config/express")(db);
 require("./config/passport")();
 
 // Start the app by listening on <port>
-var server = app.listen(config.port, function() {
-    console.log("Express server listening on HTTP on port " + config.port);
+app.listen(config.port, function() {
+    logger.log("Express server listening on HTTP on port " + config.port);
 });
 
 // Expose app
-exports = module.exports = app;
+module.exports = app;

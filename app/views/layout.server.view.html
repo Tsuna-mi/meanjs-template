@@ -21,6 +21,7 @@
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
+    <link href="http://fonts.googleapis.com/css?family=Titillium+Web:400,700,300" rel="stylesheet" type="text/css">
     <style>
         .ng-cloak {
             display: none;
@@ -33,6 +34,16 @@
 
 <body>
     {% block content %}{% endblock %}
+
+    {% if process.env.NODE_ENV === 'development' %}
+        <script type="text/javascript">
+            window.CS_ENVIRONMENT = "development";
+        </script>
+    {% endif %}
+
+    <script type="text/javascript">
+        window.CS_CONFIG = {{ config|json|safe }};
+    </script>
 
     <!--Application JavaScript Files-->
     {% for jsFile in jsFiles %}

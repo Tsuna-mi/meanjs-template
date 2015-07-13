@@ -1,0 +1,18 @@
+{
+    "extends": "../.jshintrc",
+    "globals": { // Globals variables.
+        "jasmine": true,
+        "browser": true
+    },
+    "predef": [ // Extra globals.
+        "define",
+        "describe",
+        "before",
+        "beforeEach",
+        "after",
+        "afterEach",
+        "it",
+        "expect",
+        "inject"
+    ]
+}

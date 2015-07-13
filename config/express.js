@@ -2,11 +2,10 @@
 
 var express = require("express"),
     morgan = require("morgan"),
+    cookieParser = require("cookie-parser"),
     bodyParser = require("body-parser"),
-    session = require("cookie-session"),
     compress = require("compression"),
     helmet = require("helmet"),
-    passport = require("passport"),
     config = require("./config"),
     consolidate = require("consolidate"),
     path = require("path"),
@@ -39,9 +38,6 @@ module.exports = function(db) {
         }
     }));
 
-    // Showing stack errors
-    app.set("showStackError", true);
-
     // Set the template engine
     app.engine("server.view.html", consolidate[config.templateEngine]);
 
@@ -73,18 +69,11 @@ module.exports = function(db) {
         app.disable("x-powered-by");
     }
 
+    // use the cookie parser to access the cookies easier
+    app.use(cookieParser());
+
     // use express' body parser to access body elements later
     app.use(bodyParser.json());
-
-    // use express' session
-    app.use(session({
-        name: "meanjs-template",
-        secret: config.sessionSecret
-    }));
-
-    // use passport session
-    app.use(passport.initialize());
-    app.use(passport.session());
 
     // load all configured routes (this includes API and UI routes)
     config.getGlobbedFiles("./app/routes/**/*.js").forEach(function(routePath) {

@@ -1,0 +1,25 @@
+@import "../../global/scss/settings";
+
+#error {
+    position: absolute;
+    top: 30%;
+    height: 100%;
+    width: 100%;
+    font-family: "Titillium Web", helvetica, sans-serif;
+    font-weight: 200;
+    color: palette(grey, xxlight);
+
+    .title {
+        font-size: 1.7rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .details {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .buttons {
+        text-align: right;
+    }
+}
