@@ -1,6 +1,5 @@
 "use strict";
 
-// TODO This is a direct copy from Pulsar
 /*
  * The intent with this directive is to display a loading message (supplied by
  * the attribute "loading-text") to the user while we wait for the "hide-on-element"

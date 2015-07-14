@@ -3,6 +3,7 @@
 require("./config/init")();
 
 var config = require("./config/config"),
+    VError = require("verror"),
     path = require("path"),
     mongoose = require("mongoose"),
     logger = require("./app/lib/logger.js")();
@@ -18,8 +19,9 @@ var mongoUrl = config.mongo.protocol + config.mongo.host + ":" +
 
 var db = mongoose.connect(mongoUrl, function (error) {
     if (error) {
-        logger.error("Could not connect to MongoDB: %s", error.message);
-        throw error;
+        var verror = new VError(error, "Could not connect to MongoDB");
+        logger.error(verror.message);
+        throw verror;
     }
     else {
         logger.log("Connected to MongoDB");

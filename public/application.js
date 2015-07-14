@@ -22,7 +22,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(["$locatio
         $locationProvider.html5Mode({
             enabled: true,
             // disable the requirement because of karma tests -- they fail once we
-            // include the unauthorizedInterceptor unless the base URL is not required
+            // include the errorInterceptor unless the base URL is not required
             requireBase: false
         });
 
