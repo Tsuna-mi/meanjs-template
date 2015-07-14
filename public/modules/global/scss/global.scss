@@ -1,0 +1,10 @@
+@import "settings";
+@import "foundation";
+
+.app-content,
+#app,
+.main-view {
+    // to allow the page the ability to "stretch" all the way to the bottom,
+    // make the height of all global div's 100%
+    height: 100%;
+}

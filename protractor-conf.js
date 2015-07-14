@@ -1,6 +1,5 @@
+/* global jasmine */
 "use strict";
-
-var BPromise = require("bluebird");
 
 function determineCapabilities() {
     // In continuous integration, only run one browser, but otherwise

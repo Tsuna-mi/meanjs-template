@@ -34,6 +34,16 @@
 <body>
     {% block content %}{% endblock %}
 
+    {% if process.env.NODE_ENV === 'development' %}
+        <script type="text/javascript">
+            window.ENVIRONMENT = "development";
+        </script>
+    {% endif %}
+
+    <script type="text/javascript">
+        window.CLIENT_CONFIG = {{ config|json|safe }};
+    </script>
+
     <!--Application JavaScript Files-->
     {% for jsFile in jsFiles %}
     <script type="text/javascript" src="{{jsFile}}"></script>

@@ -20,14 +20,6 @@ module.exports = function(grunt) {
                 jshintrc: true
             }
         },
-        scsslint: {
-            allFiles: [
-                "public/modules/**/*.scss",
-            ],
-            options: {
-                config: ".scss-lint.yml"
-            }
-        },
         uglify: {
             production: {
                 options: {
@@ -145,7 +137,8 @@ module.exports = function(grunt) {
         },
         sass: {
             options: {
-                sourceMap: true
+                sourceMap: true,
+                includePaths: ["public/lib/foundation/scss"]
             },
             dist: {
                 files: [{
@@ -168,15 +161,18 @@ module.exports = function(grunt) {
             dist: {
                 src: "public/dist/modules/**/*.css"
             }
+        },
+        clean: {
+            css: ["public/dist/modules/"]
         }
     });
 
-    // Load NPM tasks 
+    // Load NPM tasks
     require("load-grunt-tasks")(grunt);
 
     // A Task for loading the configuration object
     grunt.task.registerTask("loadConfig", "Task that loads the config into a grunt option.", function() {
-        var init = require("./config/init")();
+        require("./config/init")();
         var config = require("./config/config");
         var gitRev = require("git-rev-sync");
 
@@ -204,8 +200,8 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask("watch-tasks", ["lint", "generate-css"]);
-    grunt.registerTask("lint", ["jshint", "scsslint"]);
-    grunt.registerTask("generate-css", ["sass", "postcss"]);
+    grunt.registerTask("lint", ["jshint"]);
+    grunt.registerTask("generate-css", ["clean:css", "sass", "postcss"]);
 
     grunt.registerTask("default", ["lint", "generate-css", "concurrent:dev"]);
     grunt.registerTask("test", ["env:test", "lint", "generate-css", "jasmine_node", "karma:singleRun", "server", "protractor"]);

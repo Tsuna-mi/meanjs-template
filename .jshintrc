@@ -12,32 +12,22 @@
     "noarg": true, // Prohibit use of `arguments.caller` and `arguments.callee`.
     "regexp": true, // Prohibit `.` and `[^...]` in regular expressions.
     "undef": true, // Require all non-global variables be declared before they are used.
-    "unused": false, // Warn unused variables.
+    "unused": "vars", // Warn unused variables.
     "strict": true, // Require `use strict` pragma in every file.
     "trailing": true, // Prohibit trailing whitespaces.
+    "expr": true, // let expressions be statements to appease chai.expect
     "globals": { // Globals variables.
-        "jasmine": true,
         "angular": true,
         "ApplicationConfiguration": true
     },
     "predef": [ // Extra globals.
-        "define",
         "require",
         "exports",
         "module",
-        "describe",
-        "before",
-        "beforeEach",
-        "after",
-        "afterEach",
-        "it",
-        "inject",
-        "expect",
         "browser",
         "element",
         "by",
-        "$",
-        "spyOn"
+        "$"
     ],
     "indent": 4, // Specify indentation spacing
     "devel": true // Allow development statements e.g. `console.log();`.

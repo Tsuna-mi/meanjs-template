@@ -2,7 +2,6 @@
 
 angular.module("global").config(["$stateProvider", "$urlRouterProvider",
     function($stateProvider, $urlRouterProvider) {
-
         // Redirect to rootUrlPrefix when route not found
         $urlRouterProvider.otherwise(ApplicationConfiguration.rootUrlPrefix);
 

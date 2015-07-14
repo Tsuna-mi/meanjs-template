@@ -1,15 +1,17 @@
 {
-    "name": "meanjs-template",
-    "version": "0.1.0",
-    "description": "MEANJS Template",
-    "dependencies": {
-        "angular": "1.4.x",
-        "angular-resource": "1.4.x",
-        "angular-mocks": "1.4.x",
-        "angular-ui-router": "0.2.x",
-        "jquery": "~2.1.3"
-    },
-    "resolutions": {
-        "angular": "1.4.x"
-    }
+  "name": "meanjs-template",
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-cookies": "1.4.x",
+    "angular-local-storage": "0.1.4",
+    "angular-mocks": "1.4.x",
+    "angular-resource": "1.4.x",
+    "angular-ui-router": "0.2.x",
+    "foundation": "~5.5.1",
+    "jquery": "~2.1.3",
+    "lodash": "~3.9.0"
+  },
+  "resolutions": {
+    "angular": "1.4.x"
+  }
 }
