@@ -117,27 +117,6 @@ $oil         : #333333;
 $jet         : #222222;
 $black       : #000000;
 
-$egyptian-blue: #1452a0;
-$summer-sky: #2695d2;
-$sail: #add5ed;
-$onahau: #d0e5f4;
-$pale-blue: #e7f2f9;
-$black-rock: #313742;
-$lynch: #6f818b;
-$boticelli: #9fadb7;
-$zumthor: #cad2d2;
-$solitude: #d4dee6;
-$light-solitude: #ecf1f3;
-$glacier: #79b6c2;
-$carrot-orange: #f06822;
-$red: #ff0000;
-$free-speech-red: #bf0000;
-$sushi: #6ead2e;
-$vida-loca: #528222;
-
-$primary-color: rgb(21, 68, 129);
-$secondary-color: rgb(31, 152, 218);
-
 // We use these as default colors throughout
 // $primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
@@ -148,7 +127,7 @@ $secondary-color: rgb(31, 152, 218);
 
 // We use these to control various global styles
 // $body-bg: $white;
-$body-font-color: $black-rock;
+// $body-font-color: $jet;
 // $body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -1276,7 +1255,7 @@ $body-font-color: $black-rock;
 // $switch-bg: $gainsboro;
 
 // We use these to control the switch heights for our default classes
-$switch-height-tny: 1.0rem;
+// $switch-height-tny: 1.5rem;
 // $switch-height-sml: 1.75rem;
 // $switch-height-med: 2rem;
 // $switch-height-lrg: 2.5rem;
@@ -1286,7 +1265,7 @@ $switch-height-tny: 1.0rem;
 // $switch-paddle-bg: $white;
 // $switch-paddle-transition-speed: .15s;
 // $switch-paddle-transition-ease: ease-out;
-$switch-active-color: $sushi;
+// $switch-active-color: $primary-color;
 
 // 30. Tables
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1402,7 +1381,7 @@ $switch-active-color: $sushi;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: $primary-color;
+// $topbar-bg-color: $oil;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1422,7 +1401,7 @@ $topbar-bg-color: $primary-color;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: $secondary-color;
+// $topbar-link-bg-hover: $jet;
 // $topbar-link-bg-color-hover: $charcoal;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1431,25 +1410,25 @@ $topbar-link-bg-hover: $secondary-color;
 // $topbar-link-padding: ($topbar-height / 3);
 // $topbar-back-link-size: rem-calc(18);
 // $topbar-link-dropdown-padding: rem-calc(20);
-// $topbar-button-font-size: 0.75rem;
+// $topbar-button-font-size: .75rem;
 // $topbar-button-top: 7px;
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: $primary-color;
+// $topbar-dropdown-bg: $oil;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
-$topbar-dropdown-link-bg: $primary-color;
-$topbar-dropdown-link-bg-hover: $secondary-color;
+// $topbar-dropdown-link-bg: $oil;
+// $topbar-dropdown-link-bg-hover: $jet;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;
-// $topbar-dropdown-toggle-alpha: 0.4;
+// $topbar-dropdown-toggle-alpha: .4;
 
-$topbar-dropdown-label-color: $secondary-color;
+// $topbar-dropdown-label-color: $monsoon;
 // $topbar-dropdown-label-text-transform: uppercase;
 // $topbar-dropdown-label-font-weight: $font-weight-bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
-$topbar-dropdown-label-bg: $primary-color;
+// $topbar-dropdown-label-bg: $oil;
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
@@ -1465,7 +1444,7 @@ $topbar-dropdown-label-bg: $primary-color;
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
 // $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: $medium-up;
+// $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
 
 // Top-bar input styles
 // $topbar-input-height: rem-calc(28);

@@ -5,7 +5,7 @@ angular.module("error").controller("ErrorCtrl", ["$scope", "$state", "$rootScope
 
         $scope.startOver = function($event) {
             $event.currentTarget.blur();
-            $state.go("login");
+            $state.go("home");
         };
 
     }

@@ -6,7 +6,7 @@
 var ApplicationConfiguration = (function() {
     var _ = window._;
     // Init module configuration options
-    var applicationModuleName = "cognitiveReferenceStore";
+    var applicationModuleName = "meanjs-template";
     var applicationModuleVendorDependencies = ["ngResource", "ui.router", "LocalStorageModule", "ngCookies"];
 
     // Add a new vertical module
@@ -20,13 +20,13 @@ var ApplicationConfiguration = (function() {
 
     return _.defaults(
         {
-            environment: window.CS_ENVIRONMENT || "production",
+            environment: window.ENVIRONMENT || "production",
             applicationModuleName: applicationModuleName,
             applicationModuleVendorDependencies: applicationModuleVendorDependencies,
             registerModule: registerModule,
             // This route MUST end with a "/"
             rootUrlPrefix: "/"
         },
-        window.CS_CONFIG
+        window.CLIENT_CONFIG
     );
 })();

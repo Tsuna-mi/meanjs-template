@@ -8,11 +8,7 @@ module.exports = {
         protocol: process.env.MONGO_PROTOCOL || "mongodb://",
         host: process.env.MONGO_HOST || "localhost",
         port: process.env.MONGO_PORT || 27017,
-        database: "admin"
-    },
-    redis: {
-        host: process.env.REDIS_HOST || "localhost",
-        port: process.env.REDIS_PORT || 6379
+        database: process.env.MONGO_DATABASE || "meanjs-template"
     },
     assets: {
         lib: {
