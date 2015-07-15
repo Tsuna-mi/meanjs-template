@@ -13,7 +13,6 @@ Template project for a [MEAN.JS](http://meanjs.org/) application, with some chan
 - [Running the Project](#running-the-project)
   - [Install Node](#install-node)
   - [Install Dependencies](#install-dependencies)
-  - [Sass](#sass)
   - [MongoDB](#mongodb)
   - [Start the App](#start-the-app)
     - [Production](#production)
