@@ -47,16 +47,6 @@ This will install both the server side dependencies
 (via [npm](https://www.npmjs.org/)) and client side dependencies
 (via [bower](http://bower.io/)).
 
-### Sass ###
-
-This project uses [Sass](http://sass-lang.com/) as a CSS preprocessor. Instead
-of the Ruby version, this project uses [`node-sass`](https://github.com/sass/node-sass)
-and builds the Sass automatically via a Grunt task. However, we also use a
-[Sass linter](https://github.com/causes/scss-lint) which requires Ruby. To
-install `scss-lint` run the command:
-
-`$ gem install scss-lint`
-
 ### MongoDB ###
 
 This application requires a running instance of MongoDB. By default, the
