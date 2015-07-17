@@ -11,21 +11,38 @@ var express = require("express"),
     config = require("./config"),
     consolidate = require("consolidate"),
     path = require("path"),
-    gitRev = require("git-rev-sync");
+    gitRev = require("git-rev-sync"),
+    logger = require("../app/lib/logger")();
 
 module.exports = function(db) {
-    // Initialize express app
-    var app = express();
+    var app, domainMiddleware, uuid;
 
-    // load all the mongoose models
-    config.getGlobbedFiles("./app/models/**/*.js").forEach(function(modelPath) {
-        require(path.resolve(modelPath));
-    });
+    // Initialize express app
+    app = express();
 
     // Setting application local variables
     app.locals.jsFiles = config.getJavaScriptAssets();
     app.locals.cssFiles = config.getCSSAssets();
     app.locals.gitRevision = gitRev.long();
+
+    // generate a unique ID for each request within the domain
+    domainMiddleware = require("express-domain-middleware");
+    uuid = require("uuid");
+    domainMiddleware.id = function() {
+        return uuid.v4();
+    };
+    app.use(domainMiddleware);
+
+    app.use(function(req, res, next) {
+        // don't log asset requests (to keep the logs less chatty)
+        if (req.path && req.path.indexOf("/assets") === 0) {
+            return next();
+        }
+
+        logger.log("ROUTE: req.path: %s, req.params: %j, req.query: %j",
+            req.path, req.params, req.query);
+        return next();
+    });
 
     // Passing the request url to environment locals
     app.use(function(req, res, next) {
@@ -49,7 +66,7 @@ module.exports = function(db) {
 
     // Environment dependent middleware
     if (app.get("env") === "development") {
-        console.log("in development environment");
+        logger.log("in development environment");
 
         // Enable logger (morgan)
         app.use(morgan("dev"));
@@ -57,7 +74,7 @@ module.exports = function(db) {
         // Disable views cache
         app.set("view cache", false);
     } else if (app.get("env") === "production") {
-        console.log("in production environment");
+        logger.log("in production environment");
 
         app.locals.cache = "memory";
 
@@ -77,15 +94,15 @@ module.exports = function(db) {
     // use express' body parser to access body elements later
     app.use(bodyParser.json());
 
-     // use express' session
-     app.use(session({
-         name: "meanjs-template",
-         secret: config.sessionSecret
-     }));
- 
-     // use passport session
-     app.use(passport.initialize());
-     app.use(passport.session());
+    // use express' session
+    app.use(session({
+        name: "meanjs-template",
+        secret: config.sessionSecret
+    }));
+
+    // use passport session
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     // load all configured routes (this includes API and UI routes)
     config.getGlobbedFiles("./app/routes/**/*.js").forEach(function(routePath) {

@@ -13,20 +13,22 @@ var config = require("./config/config"),
  * Please note that the order of loading is important.
  */
 
+// Output the configuration for debugging purposes
+logger.log("meanjs-template config: %j", config);
+
 // Bootstrap db connection
 var mongoUrl = config.mongo.protocol + config.mongo.host + ":" +
     config.mongo.port + "/" + config.mongo.database;
 
-var db = mongoose.connect(mongoUrl, function (error) {
+var db = mongoose.connect(mongoUrl, function(error) {
     if (error) {
         var verror = new VError(error, "Could not connect to MongoDB");
         logger.error(verror.message);
         throw verror;
-    }
-    else {
+    } else {
         logger.log("Connected to MongoDB");
-        mongoose.connection.on("disconnected", function () {
-            var errorMsg = "Lost connection to MongoDB"; 
+        mongoose.connection.on("disconnected", function() {
+            var errorMsg = "Lost connection to MongoDB";
             logger.error(errorMsg);
             throw new Error(errorMsg);
         });

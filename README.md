@@ -1,12 +1,13 @@
 # meanjs-template #
 
 Template project for a [MEAN.JS](http://meanjs.org/) application, with some changes:
-* Remove the example controllers, routes, and only supply minimal single page
-* Provide a solution for continuous integration (Jenkins) testing
-* Implement a production build solution for minimizing and combining assets
-* Show Git revision within HTML page source, and version assets
-* Use Sass
-* And some other minor things which we've found useful...
+- Remove the example controllers, routes, and only supply minimal single page
+- Provide a solution for continuous integration (Jenkins) testing
+- Implement a production build solution for minimizing and combining assets
+- Include a unique ID in each log entry within a request cycle (greatly helps in debugging)
+- Show Git revision within HTML page source, and version assets
+- Use Sass
+- And some other minor things which we've found useful...
 
 ## Documentation ##
 
