@@ -17,9 +17,6 @@ module.exports = {
                 "public/lib/angular-resource/angular-resource.min.js",
                 "public/lib/angular-cookies/angular-cookies.min.js",
                 "public/lib/angular-ui-router/release/angular-ui-router.min.js",
-                // foundation
-                "public/lib/foundation/js/foundation.min.js",
-                "public/lib/foundation/js/vendor/modernizr.js",
                 // angular local storage
                 "public/lib/angular-local-storage/dist/angular-local-storage.min.js",
                 // lodash
