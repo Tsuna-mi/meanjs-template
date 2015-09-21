@@ -10,7 +10,7 @@
     "jquery": "2.1.x",
     "lodash": "3.9.x",
     "susy": "2.2.x",
-    "breakpoint-sass": "2.5.x"
+    "breakpoint-sass": "2.6.x"
   },
   "resolutions": {
     "angular": "1.4.x"
