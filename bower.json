@@ -7,9 +7,10 @@
     "angular-mocks": "1.4.x",
     "angular-resource": "1.4.x",
     "angular-ui-router": "0.2.x",
-    "foundation": "5.5.x",
     "jquery": "2.1.x",
-    "lodash": "3.9.x"
+    "lodash": "3.9.x",
+    "susy": "2.2.x",
+    "breakpoint-sass": "2.6.x"
   },
   "resolutions": {
     "angular": "1.4.x"

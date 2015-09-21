@@ -23,9 +23,6 @@ module.exports = {
                 "public/lib/angular-resource/angular-resource.js",
                 "public/lib/angular-cookies/angular-cookies.js",
                 "public/lib/angular-ui-router/release/angular-ui-router.js",
-                // foundation
-                "public/lib/foundation/js/foundation.js",
-                "public/lib/foundation/js/vendor/modernizr.js",
                 // angular local storage
                 "public/lib/angular-local-storage/dist/angular-local-storage.js",
                 // lodash

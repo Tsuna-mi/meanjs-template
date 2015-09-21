@@ -138,7 +138,7 @@ module.exports = function(grunt) {
         sass: {
             options: {
                 sourceMap: true,
-                includePaths: ["public/lib/foundation/scss"]
+                includePaths: ["public/lib/susy/sass"]
             },
             dist: {
                 files: [{
