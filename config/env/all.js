@@ -30,7 +30,6 @@ module.exports = {
             ]
         },
         css: [
-            "public/lib/normalize.css/normalize.css",
             "public/dist/modules/**/*.css"
         ],
         js: [
